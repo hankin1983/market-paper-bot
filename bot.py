@@ -37,7 +37,27 @@ def main():
         markets = get_markets()
 
         for market in markets:
-            question = market.get("question", "Unknown market")
+            for market in markets:
+    end_date = market.get("endDate")
+
+    if not end_date:
+        continue
+
+    try:
+        closing_time = datetime.fromisoformat(
+            end_date.replace("Z", "+00:00")
+        )
+    except ValueError:
+        continue
+
+    hours_left = (
+        closing_time - datetime.now(timezone.utc)
+    ).total_seconds() / 3600
+
+    if not 0 < hours_left <= 24:
+        continue
+
+    question = market.get("question", "Unknown market")            question = market.get("question", "Unknown market")
             prices = market.get("outcomePrices", "[]")
 
             if isinstance(prices, str):
