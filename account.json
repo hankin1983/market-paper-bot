@@ -1,10 +1,10 @@
 
 {
-  "starting_balance": 100.0,
-  "cash_balance": 100.0,
+  "starting_balance": 30.0,
+  "cash_balance": 30.0,
   "currency": "GBP",
   "mode": "PAPER",
-  "max_planned_loss_per_trade": 2.0,
+  "max_planned_loss_per_trade": 1.0,
   "open_positions": [],
   "closed_trades": []
 }
