@@ -15,12 +15,18 @@ PAIRS = {
     "XRP": "XRPGBP",
 }
 
+TIMEFRAMES = {
+    "1h": 1,
+    "6h": 6,
+    "24h": 24,
+}
+
 
 def get_prices(pair):
     query = urllib.parse.urlencode({"pair": pair})
     request = urllib.request.Request(
         f"{API_URL}?{query}",
-        headers={"User-Agent": "KrakenHistoryBot/1.0"},
+        headers={"User-Agent": "KrakenTrendBot/1.0"},
     )
 
     with urllib.request.urlopen(request, timeout=20) as response:
@@ -60,9 +66,62 @@ def save_history(history):
     os.replace(temporary_file, HISTORY_FILE)
 
 
+def calculate_change(readings, hours, now):
+    target = now - timedelta(hours=hours)
+
+    # Use the most recent reading at or before the target.
+    eligible = []
+
+    for entry in readings:
+        try:
+            recorded = datetime.fromisoformat(
+                entry["time"].replace("Z", "+00:00")
+            )
+            if recorded <= target:
+                eligible.append((recorded, entry))
+        except (ValueError, TypeError, KeyError):
+            continue
+
+    if not eligible:
+        return None
+
+    _, old_entry = max(eligible, key=lambda item: item[0])
+    old_price = float(old_entry["last"])
+    new_price = float(readings[-1]["last"])
+
+    if old_price <= 0:
+        return None
+
+    return (new_price / old_price - 1) * 100
+
+
+def analyse(readings, now):
+    changes = {
+        label: calculate_change(readings, hours, now)
+        for label, hours in TIMEFRAMES.items()
+    }
+
+    # Require all three timeframes before issuing signals.
+    if any(value is None for value in changes.values()):
+        return changes, "COLLECTING DATA"
+
+    one_hour = changes["1h"]
+    six_hour = changes["6h"]
+    day = changes["24h"]
+
+    if one_hour > 0.2 and six_hour > 0.5 and day > 0:
+        signal = "BUY WATCH"
+    elif one_hour < -0.2 and six_hour < -0.5 and day < 0:
+        signal = "SELL WATCH"
+    else:
+        signal = "WAIT"
+
+    return changes, signal
+
+
 def main():
-    print("KRAKEN PRICE HISTORY BOT")
-    print("------------------------")
+    print("KRAKEN MOMENTUM SCANNER")
+    print("-----------------------")
     print("Mode: MONITORING ONLY")
     print("Real orders: DISABLED")
 
@@ -83,7 +142,6 @@ def main():
                 "last": prices["last"],
             })
 
-            # Keep only the most recent 14 days
             history[symbol] = [
                 entry
                 for entry in history[symbol]
@@ -92,18 +150,27 @@ def main():
                 ) >= cutoff
             ]
 
+            changes, signal = analyse(history[symbol], now)
+
+            spread_pct = (
+                (prices["ask"] - prices["bid"])
+                / prices["ask"] * 100
+            ) if prices["ask"] > 0 else 0
+
             print(f"\n{symbol} / GBP")
             print(f"Buy price: £{prices['ask']:,.4f}")
             print(f"Sell price: £{prices['bid']:,.4f}")
+            print(f"Spread: {spread_pct:.3f}%")
             print(f"Saved readings: {len(history[symbol])}")
 
-            if len(history[symbol]) >= 2:
-                previous = history[symbol][-2]["last"]
-                current = prices["last"]
+            for label, change in changes.items():
+                if change is None:
+                    print(f"{label} change: Not enough history")
+                else:
+                    print(f"{label} change: {change:+.3f}%")
 
-                if previous > 0:
-                    change = (current / previous - 1) * 100
-                    print(f"Change since previous scan: {change:+.3f}%")
+            print(f"Signal: {signal}")
+            print("-----------------------")
 
         except Exception as error:
             print(f"{symbol}: ERROR - {error}")
