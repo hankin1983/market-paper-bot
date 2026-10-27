@@ -7,7 +7,11 @@ on:
     - cron: '7,22,37,52 * * * *'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: kraken-price-history
+  cancel-in-progress: false
 
 jobs:
   scan-markets:
@@ -17,11 +21,26 @@ jobs:
     steps:
       - name: Get bot files
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Run market scanner
+      - name: Run Kraken price scanner
         run: python bot.py
+
+      - name: Save updated price history
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add price_history.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to save."
+          else
+            git commit -m "Update Kraken price history"
+            git push
+          fi
