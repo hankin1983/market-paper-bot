@@ -1,27 +1,21 @@
 
 import json
-import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-API_URL = "https://gamma-api.polymarket.com/markets"
+API_URL = "https://api.kraken.com/0/public/Ticker"
+
+# Markets to watch against GBP
+PAIRS = {
+    "Bitcoin": "XBTGBP",
+    "Ethereum": "ETHGBP",
+    "Solana": "SOLGBP",
+    "XRP": "XRPGBP",
+}
 
 
-def load_account():
-    with open("account.json", "r") as file:
-        return json.load(file)
-
-
-def get_markets():
-    params = urllib.parse.urlencode({
-        "active": "true",
-        "closed": "false",
-        "limit": 100,
-        "order": "endDate",
-        "ascending": "true"
-    })
-
-    url = f"{API_URL}?{params}"
+def get_price(pair):
+    url = f"{API_URL}?pair={pair}"
 
     request = urllib.request.Request(
         url,
@@ -29,71 +23,40 @@ def get_markets():
     )
 
     with urllib.request.urlopen(request, timeout=20) as response:
-        return json.load(response)
+        data = json.load(response)
 
+    if data.get("error"):
+        raise RuntimeError(data["error"])
 
-def hours_until_close(market):
-    end_date = market.get("endDate")
+    ticker = next(iter(data["result"].values()))
 
-    if not end_date:
-        return None
-
-    try:
-        closing_time = datetime.fromisoformat(
-            end_date.replace("Z", "+00:00")
-        )
-
-        return (
-            closing_time - datetime.now(timezone.utc)
-        ).total_seconds() / 3600
-
-    except (ValueError, TypeError):
-        return None
+    return {
+        "bid": float(ticker["b"][0]),
+        "ask": float(ticker["a"][0]),
+        "last": float(ticker["c"][0]),
+    }
 
 
 def main():
-    account = load_account()
-
-    print("AI MARKET PAPER BOT")
+    print("KRAKEN TRADING BOT")
     print("-------------------")
-    print("Mode: PAPER TRADING ONLY")
-    print(f"Virtual balance: £{account['cash_balance']:.2f}")
-    print(
-        f"Planned loss limit: "
-        f"£{account['max_planned_loss_per_trade']:.2f}"
-    )
-    print("Searching for short-term markets...\n")
+    print("Mode: PRICE MONITORING ONLY")
+    print("Real orders: DISABLED")
+    print("Time:", datetime.now(timezone.utc).isoformat())
+    print()
 
-    markets = get_markets()
-    matching_markets = []
+    for name, pair in PAIRS.items():
+        try:
+            price = get_price(pair)
 
-    for market in markets:
-        hours_left = hours_until_close(market)
+            print(f"{name} ({pair})")
+            print(f"Last price: £{price['last']:,.4f}")
+            print(f"Buy (ask): £{price['ask']:,.4f}")
+            print(f"Sell (bid): £{price['bid']:,.4f}")
+            print("-------------------")
 
-        if hours_left is None or not 0 < hours_left <= 24:
-            continue
-
-        matching_markets.append((hours_left, market))
-
-    matching_markets.sort(key=lambda item: item[0])
-
-    for hours_left, market in matching_markets:
-        question = market.get("question", "Unknown market")
-        prices = market.get("outcomePrices", "[]")
-
-        if isinstance(prices, str):
-            prices = json.loads(prices)
-
-        print(f"Market: {question}")
-        print(f"Outcome prices: {prices}")
-        print(f"Hours until close: {hours_left:.1f}")
-        print("------------------------------------")
-
-    print(f"\nTotal markets scanned: {len(markets)}")
-    print(f"Markets closing within 24 hours: {len(matching_markets)}")
-
-    if not matching_markets:
-        print("No matching markets in this batch.")
+        except Exception as error:
+            print(f"{name}: ERROR - {error}")
 
 
 if __name__ == "__main__":
