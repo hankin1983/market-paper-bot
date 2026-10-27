@@ -1,5 +1,5 @@
 
-name: AI Market Paper Bot
+name: Kraken Paper Trading Bot
 
 on:
   workflow_dispatch:
@@ -10,37 +10,36 @@ permissions:
   contents: write
 
 concurrency:
-  group: kraken-price-history
+  group: kraken-paper-trading
   cancel-in-progress: false
 
 jobs:
-  scan-markets:
+  paper-trade:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
       - name: Get bot files
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Run Kraken price scanner
+      - name: Run automatic paper trading bot
         run: python bot.py
 
-      - name: Save updated price history
+      - name: Save trading account and price history
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add price_history.json
+
+          git add account.json price_history.json
 
           if git diff --cached --quiet; then
             echo "No changes to save."
           else
-            git commit -m "Update Kraken price history"
+            git commit -m "Update Kraken paper trading records"
             git push
           fi
