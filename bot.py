@@ -15,7 +15,7 @@ API_URL = "https://gamma-api.polymarket.com/markets"
 
 
 def get_markets():
-    url = API_URL + "?active=true&closed=false&limit=20"
+    url = API_URL + "?active=true&closed=false&limit=100"
     request = urllib.request.Request(
         url,
         headers={"User-Agent": "MarketPaperBot/1.0"}
