@@ -1,5 +1,6 @@
 
 import json
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -12,7 +13,16 @@ def load_account():
 
 
 def get_markets():
-    url = API_URL + "?active=true&closed=false&limit=100"
+    params = urllib.parse.urlencode({
+        "active": "true",
+        "closed": "false",
+        "limit": 100,
+        "order": "endDate",
+        "ascending": "true"
+    })
+
+    url = f"{API_URL}?{params}"
+
     request = urllib.request.Request(
         url,
         headers={"User-Agent": "MarketPaperBot/1.0"}
@@ -33,11 +43,9 @@ def hours_until_close(market):
             end_date.replace("Z", "+00:00")
         )
 
-        hours_left = (
+        return (
             closing_time - datetime.now(timezone.utc)
         ).total_seconds() / 3600
-
-        return hours_left
 
     except (ValueError, TypeError):
         return None
@@ -46,50 +54,46 @@ def hours_until_close(market):
 def main():
     account = load_account()
 
-    balance = account["cash_balance"]
-    max_loss = account["max_planned_loss_per_trade"]
-
     print("AI MARKET PAPER BOT")
     print("-------------------")
     print("Mode: PAPER TRADING ONLY")
-    print(f"Virtual balance: £{balance:.2f}")
-    print(f"Planned loss limit: £{max_loss:.2f}")
-    print("Scanning prediction markets...\n")
+    print(f"Virtual balance: £{account['cash_balance']:.2f}")
+    print(
+        f"Planned loss limit: "
+        f"£{account['max_planned_loss_per_trade']:.2f}"
+    )
+    print("Searching for short-term markets...\n")
 
-    try:
-        markets = get_markets()
-        matching_markets = 0
+    markets = get_markets()
+    matching_markets = []
 
-        for market in markets:
-            hours_left = hours_until_close(market)
+    for market in markets:
+        hours_left = hours_until_close(market)
 
-            # Only show markets ending within 24 hours
-            if hours_left is None or not 0 < hours_left <= 24:
-                continue
+        if hours_left is None or not 0 < hours_left <= 24:
+            continue
 
-            question = market.get("question", "Unknown market")
-            prices = market.get("outcomePrices", "[]")
+        matching_markets.append((hours_left, market))
 
-            if isinstance(prices, str):
-                prices = json.loads(prices)
+    matching_markets.sort(key=lambda item: item[0])
 
-            matching_markets += 1
+    for hours_left, market in matching_markets:
+        question = market.get("question", "Unknown market")
+        prices = market.get("outcomePrices", "[]")
 
-            print(f"Market: {question}")
-            print(f"Outcome prices: {prices}")
-            print(f"Hours until close: {hours_left:.1f}")
-            print("------------------------------------")
+        if isinstance(prices, str):
+            prices = json.loads(prices)
 
-        print(f"\nTotal markets scanned: {len(markets)}")
-        print(f"Markets closing within 24 hours: {matching_markets}")
+        print(f"Market: {question}")
+        print(f"Outcome prices: {prices}")
+        print(f"Hours until close: {hours_left:.1f}")
+        print("------------------------------------")
 
-        if matching_markets == 0:
-            print("No short-term markets found in this batch.")
-            print("The scanner is working correctly.")
+    print(f"\nTotal markets scanned: {len(markets)}")
+    print(f"Markets closing within 24 hours: {len(matching_markets)}")
 
-    except Exception as error:
-        print(f"Scanner error: {error}")
-        raise
+    if not matching_markets:
+        print("No matching markets in this batch.")
 
 
 if __name__ == "__main__":
