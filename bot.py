@@ -4,7 +4,10 @@ import urllib.request
 from datetime import datetime, timezone
 
 # Our virtual trading account
-STARTING_BALANCE = 100.00
+with open("account.json", "r") as file:
+    account = json.load(file)
+
+STARTING_BALANCE = account["cash_balance"]
 MAX_PLANNED_LOSS = 2.00
 
 # Public prediction market data
