@@ -1,9 +1,30 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 30.0,
+  "cash_balance": 20.0,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [],
+  "open_positions": [
+    {
+      "symbol": "BTC",
+      "opened_at": "2026-10-28T20:02:22.326303+00:00",
+      "entry_price": 61294.2,
+      "quantity": 8.124749160605735e-05,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 59455.373999999996,
+      "target_price": 64358.909999999996
+    },
+    {
+      "symbol": "ETH",
+      "opened_at": "2026-10-28T20:02:22.326303+00:00",
+      "entry_price": 1789.63,
+      "quantity": 0.0027826980996071816,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1735.9411,
+      "target_price": 1879.1115000000002
+    }
+  ],
   "closed_trades": []
 }
