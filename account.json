@@ -1,10 +1,21 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 29.35004305,
+  "cash_balance": 24.35004305,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [],
+  "open_positions": [
+    {
+      "symbol": "SOL",
+      "opened_at": "2026-10-30T23:37:39.983698+00:00",
+      "entry_price": 71.79,
+      "quantity": 0.06936899289594652,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 69.6363,
+      "target_price": 75.37950000000001
+    }
+  ],
   "closed_trades": [
     {
       "symbol": "BTC",
