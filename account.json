@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 24.19076956,
+  "cash_balance": 19.19076956,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -14,6 +14,16 @@
       "entry_fee": 0.02,
       "stop_price": 0.9075708,
       "target_price": 0.982422
+    },
+    {
+      "symbol": "SOL",
+      "opened_at": "2026-10-31T18:25:20.736060+00:00",
+      "entry_price": 71.87,
+      "quantity": 0.069291776819257,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 69.71390000000001,
+      "target_price": 75.46350000000001
     }
   ],
   "closed_trades": [
