@@ -1,21 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 24.2417442,
+  "cash_balance": 29.19076956,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [
-    {
-      "symbol": "SOL",
-      "opened_at": "2026-10-30T23:37:39.983698+00:00",
-      "entry_price": 71.79,
-      "quantity": 0.06936899289594652,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 69.6363,
-      "target_price": 75.37950000000001
-    }
-  ],
+  "open_positions": [],
   "closed_trades": [
     {
       "symbol": "BTC",
@@ -95,6 +84,22 @@
       "exit_fee": 0.019645386163066735,
       "proceeds": 4.891701154603617,
       "profit": -0.10829884539638268,
+      "reason": "MOMENTUM EXIT"
+    },
+    {
+      "symbol": "SOL",
+      "opened_at": "2026-10-30T23:37:39.983698+00:00",
+      "entry_price": 71.79,
+      "quantity": 0.06936899289594652,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 69.6363,
+      "target_price": 75.37950000000001,
+      "closed_at": "2026-10-31T05:24:51.273524+00:00",
+      "exit_price": 71.63,
+      "exit_fee": 0.019875603844546598,
+      "proceeds": 4.949025357292102,
+      "profit": -0.050974642707897644,
       "reason": "MOMENTUM EXIT"
     }
   ]
