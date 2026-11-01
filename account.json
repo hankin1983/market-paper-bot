@@ -1,20 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 19.11220138,
+  "cash_balance": 24.04169305,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
   "open_positions": [
-    {
-      "symbol": "XRP",
-      "opened_at": "2026-10-31T15:54:24.359103+00:00",
-      "entry_price": 0.93564,
-      "quantity": 5.322559958958574,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 0.9075708,
-      "target_price": 0.982422
-    },
     {
       "symbol": "ETH",
       "opened_at": "2026-11-01T01:42:50.216987+00:00",
@@ -137,6 +127,22 @@
       "exit_fee": 0.01976478641992487,
       "proceeds": 4.921431818561292,
       "profit": -0.07856818143870825,
+      "reason": "MOMENTUM EXIT"
+    },
+    {
+      "symbol": "XRP",
+      "opened_at": "2026-10-31T15:54:24.359103+00:00",
+      "entry_price": 0.93564,
+      "quantity": 5.322559958958574,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.9075708,
+      "target_price": 0.982422,
+      "closed_at": "2026-11-01T20:16:23.278226+00:00",
+      "exit_price": 0.92987,
+      "exit_fee": 0.019797155316147237,
+      "proceeds": 4.929491673720662,
+      "profit": -0.07050832627933801,
       "reason": "MOMENTUM EXIT"
     }
   ]
