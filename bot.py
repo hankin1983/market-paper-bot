@@ -14,6 +14,22 @@ PAIRS = {
     "ETH": "ETHGBP",
     "SOL": "SOLGBP",
     "XRP": "XRPGBP",
+    "ADA": "ADAGBP",
+    "DOGE": "DOGEGBP",
+    "LINK": "LINKGBP",
+    "AVAX": "AVAXGBP",
+    "DOT": "DOTGBP",
+    "LTC": "LTCGBP",
+    "BCH": "BCHGBP",
+    "XLM": "XLMGBP",
+    "UNI": "UNIGBP",
+    "AAVE": "AAVEGBP",
+    "ATOM": "ATOMGBP",
+    "ALGO": "ALGOGBP",
+    "ETC": "ETCGBP",
+    "FIL": "FILGBP",
+    "NEAR": "NEARGBP",
+    "TRX": "TRXGBP",
 }
 
 TRADE_SIZE = 5.00
