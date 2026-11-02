@@ -5,6 +5,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
+# PAPER TRADING ONLY
 API_URL = "https://api.kraken.com/0/public/Ticker"
 HISTORY_FILE = "price_history.json"
 ACCOUNT_FILE = "account.json"
@@ -40,19 +41,18 @@ MAX_HOLD_HOURS = 48
 MAX_OPEN_POSITIONS = 2
 MAX_SPREAD_PERCENT = 0.5
 COOLDOWN_HOURS = 6
+MIN_BUY_SCORE = 1.0
 
 
 def read_json(filename):
-    with open(filename, "r", encoding="utf-8") as file:
+    with open(filename, encoding="utf-8") as file:
         return json.load(file)
 
 
 def save_json(filename, data):
     temporary = filename + ".tmp"
-
     with open(temporary, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2)
-
     os.replace(temporary, filename)
 
 
@@ -64,11 +64,9 @@ def parse_time(value):
 
 def get_prices(pair):
     query = urllib.parse.urlencode({"pair": pair})
-    url = f"{API_URL}?{query}"
-
     request = urllib.request.Request(
-        url,
-        headers={"User-Agent": "KrakenPaperBot/1.0"},
+        f"{API_URL}?{query}",
+        headers={"User-Agent": "KrakenPaperBot/3.0"},
     )
 
     with urllib.request.urlopen(
@@ -81,17 +79,22 @@ def get_prices(pair):
 
     ticker = next(iter(data["result"].values()))
 
-    return {
+    prices = {
         "bid": float(ticker["b"][0]),
         "ask": float(ticker["a"][0]),
         "last": float(ticker["c"][0]),
     }
 
+    if not (
+        0 < prices["bid"] <= prices["ask"]
+        and prices["last"] > 0
+    ):
+        raise ValueError("Invalid prices")
+
+    return prices
+
 
 def percentage_change(readings, hours, now):
-    if not readings:
-        return None
-
     target = now - timedelta(hours=hours)
     candidates = []
 
@@ -116,54 +119,36 @@ def percentage_change(readings, hours, now):
         candidates, key=lambda item: item[0]
     )[1]
 
-    old_price = float(previous["last"])
-    current_price = float(readings[-1]["last"])
+    old = float(previous["last"])
+    current = float(readings[-1]["last"])
 
-    if old_price <= 0:
+    if old <= 0:
         return None
 
-    return (
-        (current_price - old_price) / old_price
-    ) * 100
+    return (current / old - 1) * 100
 
 
-def get_signal(readings, now):
-    one_hour = percentage_change(
-        readings, 1, now
+def calculate_score(changes, spread):
+    if any(value is None for value in changes.values()):
+        return None
+
+    hour = changes["1h"]
+    six = changes["6h"]
+    day = changes["24h"]
+
+    # A balanced trend score, not simply biggest gain.
+    score = (
+        0.5 * hour
+        + 0.3 * six
+        + 0.2 * day
+        - 2.0 * spread
     )
-    six_hours = percentage_change(
-        readings, 6, now
-    )
-    day = percentage_change(
-        readings, 24, now
-    )
 
-    changes = {
-        "1h": one_hour,
-        "6h": six_hours,
-        "24h": day,
-    }
+    # Avoid chasing sharp one-hour spikes.
+    if hour > 2.0:
+        score -= (hour - 2.0) * 2
 
-    if any(
-        value is None for value in changes.values()
-    ):
-        return "COLLECTING DATA", changes
-
-    if (
-        one_hour > 0.2
-        and six_hours > 0.5
-        and day > 0
-    ):
-        return "BUY WATCH", changes
-
-    if (
-        one_hour < -0.2
-        and six_hours < -0.5
-        and day < 0
-    ):
-        return "SELL WATCH", changes
-
-    return "WAIT", changes
+    return score
 
 
 def recently_closed(account, symbol, now):
@@ -171,9 +156,7 @@ def recently_closed(account, symbol, now):
         if trade["symbol"] != symbol:
             continue
 
-        elapsed = now - parse_time(
-            trade["closed_at"]
-        )
+        elapsed = now - parse_time(trade["closed_at"])
 
         if timedelta(0) <= elapsed < timedelta(
             hours=COOLDOWN_HOURS
@@ -183,62 +166,46 @@ def recently_closed(account, symbol, now):
     return False
 
 
-def open_trade(account, symbol, prices, now):
+def open_trade(account, symbol, prices, now, score):
     if len(account["open_positions"]) >= MAX_OPEN_POSITIONS:
-        return
+        return False
 
     if any(
-        position["symbol"] == symbol
-        for position in account["open_positions"]
+        p["symbol"] == symbol
+        for p in account["open_positions"]
     ):
-        return
+        return False
 
     if float(account["cash_balance"]) < TRADE_SIZE:
-        return
+        return False
 
     if recently_closed(account, symbol, now):
-        return
-
-    spread = (
-        (prices["ask"] - prices["bid"])
-        / prices["ask"] * 100
-    )
-
-    if spread > MAX_SPREAD_PERCENT:
-        print(f"{symbol}: Spread too wide")
-        return
+        return False
 
     entry_fee = TRADE_SIZE * FEE_RATE
     quantity = (
         TRADE_SIZE - entry_fee
     ) / prices["ask"]
 
-    stop_price = (
-        prices["ask"] * (1 - STOP_LOSS)
-    )
-    target_price = (
-        prices["ask"] * (1 + TAKE_PROFIT)
-    )
+    stop_price = prices["ask"] * (1 - STOP_LOSS)
+    target_price = prices["ask"] * (1 + TAKE_PROFIT)
 
     estimated_stop_proceeds = (
-        quantity
-        * stop_price
-        * (1 - FEE_RATE)
+        quantity * stop_price * (1 - FEE_RATE)
     )
 
-    planned_loss = (
-        TRADE_SIZE - estimated_stop_proceeds
-    )
+    planned_loss = TRADE_SIZE - estimated_stop_proceeds
 
-    risk_limit = float(
+    if planned_loss > float(
         account["max_planned_loss_per_trade"]
+    ):
+        return False
+
+    account["cash_balance"] = round(
+        float(account["cash_balance"]) - TRADE_SIZE, 8
     )
 
-    if planned_loss > risk_limit:
-        print(f"{symbol}: Risk limit exceeded")
-        return
-
-    position = {
+    account["open_positions"].append({
         "symbol": symbol,
         "opened_at": now.isoformat(),
         "entry_price": prices["ask"],
@@ -247,46 +214,29 @@ def open_trade(account, symbol, prices, now):
         "entry_fee": entry_fee,
         "stop_price": stop_price,
         "target_price": target_price,
-    }
-
-    account["cash_balance"] = round(
-        float(account["cash_balance"])
-        - TRADE_SIZE,
-        8,
-    )
-
-    account["open_positions"].append(
-        position
-    )
+        "strategy": "scoring-v3",
+        "entry_score": score,
+    })
 
     print(
         f"PAPER BUY: {symbol} "
         f"£{TRADE_SIZE:.2f} "
-        f"at £{prices['ask']:.4f}"
+        f"Score {score:+.3f}"
     )
+    return True
 
 
-def close_trade(
-    account, position, prices, now, reason
-):
-    gross = (
-        float(position["quantity"])
-        * prices["bid"]
-    )
-
+def close_trade(account, position, prices, now, reason):
+    gross = float(position["quantity"]) * prices["bid"]
     exit_fee = gross * FEE_RATE
     proceeds = gross - exit_fee
-    profit = (
-        proceeds - float(position["cost"])
-    )
+    profit = proceeds - float(position["cost"])
 
     account["cash_balance"] = round(
-        float(account["cash_balance"])
-        + proceeds,
-        8,
+        float(account["cash_balance"]) + proceeds, 8
     )
 
-    closed_trade = {
+    account["closed_trades"].append({
         **position,
         "closed_at": now.isoformat(),
         "exit_price": prices["bid"],
@@ -294,63 +244,54 @@ def close_trade(
         "proceeds": proceeds,
         "profit": profit,
         "reason": reason,
-    }
+    })
 
-    account["closed_trades"].append(
-        closed_trade
-    )
-
-    account["open_positions"].remove(
-        position
-    )
+    account["open_positions"].remove(position)
 
     print(
         f"PAPER SELL: {position['symbol']} "
-        f"{reason} "
-        f"P/L £{profit:+.2f}"
+        f"{reason} | P/L £{profit:+.2f}"
     )
 
 
-def check_exits(
-    account, symbol, prices, now, signal
-):
-    for position in list(
-        account["open_positions"]
-    ):
-        if position["symbol"] != symbol:
+def check_exits(account, prices_by_coin, scores, now):
+    for position in list(account["open_positions"]):
+        symbol = position["symbol"]
+        prices = prices_by_coin.get(symbol)
+
+        if prices is None:
+            print(f"{symbol}: Cannot check exit - no price")
             continue
 
         held_hours = (
-            now - parse_time(
-                position["opened_at"]
-            )
+            now - parse_time(position["opened_at"])
         ).total_seconds() / 3600
 
         reason = None
 
-        if prices["bid"] <= float(
-            position["stop_price"]
-        ):
+        if prices["bid"] <= float(position["stop_price"]):
             reason = "STOP LOSS"
-
-        elif prices["bid"] >= float(
-            position["target_price"]
-        ):
+        elif prices["bid"] >= float(position["target_price"]):
             reason = "TAKE PROFIT"
-
         elif held_hours >= MAX_HOLD_HOURS:
             reason = "TIME EXIT"
+        else:
+            score = scores.get(symbol)
+            weak = score is not None and score < -1.0
 
-        elif signal == "SELL WATCH":
-            reason = "MOMENTUM EXIT"
+            # Two consecutive weak readings before
+            # selling on momentum alone.
+            count = int(position.get("weak_scans", 0))
+            position["weak_scans"] = (
+                count + 1 if weak else 0
+            )
+
+            if position["weak_scans"] >= 2:
+                reason = "SCORE EXIT"
 
         if reason:
             close_trade(
-                account,
-                position,
-                prices,
-                now,
-                reason,
+                account, position, prices, now, reason
             )
 
 
@@ -359,8 +300,7 @@ def show_account(account, latest_prices):
     open_value = 0.0
 
     for position in account["open_positions"]:
-        symbol = position["symbol"]
-        prices = latest_prices.get(symbol)
+        prices = latest_prices.get(position["symbol"])
 
         if prices:
             open_value += (
@@ -369,11 +309,12 @@ def show_account(account, latest_prices):
                 * (1 - FEE_RATE)
             )
         else:
-            open_value += float(
-                position["cost"]
+            # Cost basis is only a fallback estimate.
+            open_value += float(position["cost"])
+            print(
+                f"WARNING: {position['symbol']} "
+                "valuation uses cost basis"
             )
-
-    equity = cash + open_value
 
     realised = sum(
         float(trade["profit"])
@@ -382,16 +323,10 @@ def show_account(account, latest_prices):
 
     print("\n===== VIRTUAL ACCOUNT =====")
     print(f"Cash: £{cash:.2f}")
-    print(f"Estimated equity: £{equity:.2f}")
+    print(f"Estimated equity: £{cash + open_value:.2f}")
     print(f"Realised P/L: £{realised:+.2f}")
-    print(
-        f"Open trades: "
-        f"{len(account['open_positions'])}"
-    )
-    print(
-        f"Closed trades: "
-        f"{len(account['closed_trades'])}"
-    )
+    print(f"Open trades: {len(account['open_positions'])}")
+    print(f"Closed trades: {len(account['closed_trades'])}")
     print("===========================")
 
 
@@ -402,103 +337,97 @@ def main():
     history = read_json(HISTORY_FILE)
 
     if account.get("mode") != "PAPER":
-        raise RuntimeError(
-            "Bot must remain in PAPER mode"
-        )
+        raise RuntimeError("PAPER mode required")
 
     if float(
-        account["max_planned_loss_per_trade"]
+        account.get("max_planned_loss_per_trade", 999)
     ) > 1.0:
-        raise RuntimeError(
-            "Risk limit cannot exceed £1"
-        )
+        raise RuntimeError("Risk limit exceeds £1")
+
+    print("KRAKEN SCORING PAPER BOT V3")
+    print("REAL ORDERS DISABLED")
+    print(f"Time: {now.isoformat()}")
 
     latest_prices = {}
-    signals = {}
-
-    print("KRAKEN PAPER TRADING BOT")
-    print("REAL TRADING DISABLED")
-    print(f"Time: {now.isoformat()}")
+    scores = {}
+    candidates = []
 
     for symbol, pair in PAIRS.items():
         try:
             prices = get_prices(pair)
             latest_prices[symbol] = prices
 
-            readings = history.setdefault(
-                symbol, []
-            )
-
+            readings = history.setdefault(symbol, [])
             readings.append({
                 "time": now.isoformat(),
                 **prices,
             })
-
             history[symbol] = readings[-1500:]
 
-            signal, changes = get_signal(
-                history[symbol], now
+            changes = {
+                f"{hours}h": percentage_change(
+                    history[symbol], hours, now
+                )
+                for hours in (1, 6, 24)
+            }
+
+            spread = (
+                (prices["ask"] - prices["bid"])
+                / prices["ask"] * 100
             )
 
-            signals[symbol] = signal
+            score = calculate_score(changes, spread)
+            scores[symbol] = score
 
-            print(f"\n{symbol} / GBP")
+            if score is None:
+                print(f"{symbol}: COLLECTING DATA")
+                continue
+
             print(
-                f"Buy: £{prices['ask']:.4f}"
-            )
-            print(
-                f"Sell: £{prices['bid']:.4f}"
-            )
-            print(
-                f"Readings: "
-                f"{len(history[symbol])}"
+                f"{symbol}: Score {score:+.3f} "
+                f"| Spread {spread:.3f}%"
             )
 
-            for period, change in changes.items():
-                if change is None:
-                    print(
-                        f"{period}: COLLECTING DATA"
-                    )
-                else:
-                    print(
-                        f"{period}: {change:+.3f}%"
-                    )
-
-            print(f"Signal: {signal}")
+            if (
+                spread <= MAX_SPREAD_PERCENT
+                and score >= MIN_BUY_SCORE
+                and changes["6h"] > 0
+                and changes["24h"] > -2.0
+            ):
+                candidates.append((score, symbol))
 
         except Exception as error:
-            print(
-                f"{symbol}: ERROR - {error}"
-            )
+            print(f"{symbol}: SKIPPED - {error}")
 
-    for symbol, prices in latest_prices.items():
-        check_exits(
+    # Protective exits always come before entries.
+    check_exits(account, latest_prices, scores, now)
+
+    candidates.sort(reverse=True)
+
+    print("\n===== TOP OPPORTUNITIES =====")
+    if not candidates:
+        print("No coins qualified for a buy")
+    else:
+        for score, symbol in candidates[:5]:
+            print(f"{symbol}: {score:+.3f}")
+
+    # Rank first, then consider virtual purchases.
+    for score, symbol in candidates:
+        if len(account["open_positions"]) >= MAX_OPEN_POSITIONS:
+            break
+
+        open_trade(
             account,
             symbol,
-            prices,
+            latest_prices[symbol],
             now,
-            signals[symbol],
+            score,
         )
 
-    for symbol, prices in latest_prices.items():
-        if signals[symbol] == "BUY WATCH":
-            open_trade(
-                account,
-                symbol,
-                prices,
-                now,
-            )
+    save_json(HISTORY_FILE, history)
+    save_json(ACCOUNT_FILE, account)
 
-    save_json(
-        HISTORY_FILE, history
-    )
-    save_json(
-        ACCOUNT_FILE, account
-    )
-
-    show_account(
-        account, latest_prices
-    )
+    show_account(account, latest_prices)
 
 
 if __name__ == "__main__":
