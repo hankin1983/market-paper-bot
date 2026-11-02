@@ -1,21 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 23.96153264,
+  "cash_balance": 28.90273878,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [
-    {
-      "symbol": "ETH",
-      "opened_at": "2026-11-01T01:42:50.216987+00:00",
-      "entry_price": 1695.07,
-      "quantity": 0.0029379317668296887,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 1644.2178999999999,
-      "target_price": 1779.8235
-    }
-  ],
+  "open_positions": [],
   "closed_trades": [
     {
       "symbol": "BTC",
@@ -159,6 +148,22 @@
       "exit_fee": 0.019758391918584386,
       "proceeds": 4.9198395877275125,
       "profit": -0.08016041227248749,
+      "reason": "MOMENTUM EXIT"
+    },
+    {
+      "symbol": "ETH",
+      "opened_at": "2026-11-01T01:42:50.216987+00:00",
+      "entry_price": 1695.07,
+      "quantity": 0.0029379317668296887,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1644.2178999999999,
+      "target_price": 1779.8235,
+      "closed_at": "2026-11-02T16:22:32.227095+00:00",
+      "exit_price": 1688.62,
+      "exit_fee": 0.019844201360415797,
+      "proceeds": 4.941206138743533,
+      "profit": -0.058793861256466684,
       "reason": "MOMENTUM EXIT"
     }
   ]
