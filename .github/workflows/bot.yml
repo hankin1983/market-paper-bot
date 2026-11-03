@@ -16,11 +16,14 @@ concurrency:
 jobs:
   paper-trade:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
-      - name: Get bot files
+      - name: Get latest bot files
         uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -39,7 +42,17 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No changes to save."
+            exit 0
+          fi
+
+          git commit -m "Update Kraken paper trading records"
+
+          # Save only if nobody has changed the branch.
+          # Never overwrite newer account data.
+          if git push origin HEAD:main; then
+            echo "Trading records saved successfully."
           else
-            git commit -m "Update Kraken paper trading records"
-            git push
+            echo "SAVE CONFLICT: Remote data changed."
+            echo "Stopping to protect trading history."
+            exit 1
           fi
