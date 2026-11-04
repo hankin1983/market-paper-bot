@@ -1,22 +1,33 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 23.92891415,
+  "cash_balance": 19.17734147,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
   "open_positions": [
     {
-      "symbol": "ETH",
-      "opened_at": "2026-11-04T06:33:58.033068+00:00",
-      "entry_price": 1705.21,
-      "quantity": 0.002920461409445171,
+      "symbol": "BTC",
+      "opened_at": "2026-11-04T15:28:55.165190+00:00",
+      "entry_price": 59683.9,
+      "quantity": 8.343958756046438e-05,
       "cost": 5.0,
       "entry_fee": 0.02,
-      "stop_price": 1654.0537,
-      "target_price": 1790.4705000000001,
+      "stop_price": 57893.383,
+      "target_price": 62668.095,
       "strategy": "scoring-v3",
-      "entry_score": 1.2053446619243477,
-      "weak_scans": 0
+      "entry_score": 1.540449107069911
+    },
+    {
+      "symbol": "DOT",
+      "opened_at": "2026-11-04T15:28:55.165190+00:00",
+      "entry_price": 0.7211,
+      "quantity": 6.906115656635697,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.699467,
+      "target_price": 0.757155,
+      "strategy": "scoring-v3",
+      "entry_score": 1.0875296941956263
     }
   ],
   "closed_trades": [
@@ -216,6 +227,25 @@
       "exit_fee": 0.020964181949458486,
       "proceeds": 5.220081305415163,
       "profit": 0.2200813054151629,
+      "reason": "TAKE PROFIT"
+    },
+    {
+      "symbol": "ETH",
+      "opened_at": "2026-11-04T06:33:58.033068+00:00",
+      "entry_price": 1705.21,
+      "quantity": 0.002920461409445171,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1654.0537,
+      "target_price": 1790.4705000000001,
+      "strategy": "scoring-v3",
+      "entry_score": 1.2053446619243477,
+      "weak_scans": 0,
+      "closed_at": "2026-11-04T15:28:55.165190+00:00",
+      "exit_price": 1804.34,
+      "exit_fee": 0.0210780213580732,
+      "proceeds": 5.248427318160227,
+      "profit": 0.24842731816022656,
       "reason": "TAKE PROFIT"
     }
   ]
