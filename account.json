@@ -29,7 +29,7 @@
       "target_price": 1.0038315,
       "strategy": "scoring-v3",
       "entry_score": 2.209802168386397,
-      "weak_scans": 0
+      "weak_scans": 1
     }
   ],
   "closed_trades": [
