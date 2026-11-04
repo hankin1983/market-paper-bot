@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 18.90273878,
+  "cash_balance": 23.70883284,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -16,19 +16,6 @@
       "target_price": 0.07271250000000001,
       "strategy": "scoring-v3",
       "entry_score": 1.0507179748747226,
-      "weak_scans": 0
-    },
-    {
-      "symbol": "XRP",
-      "opened_at": "2026-11-03T12:41:30.020127+00:00",
-      "entry_price": 0.95603,
-      "quantity": 5.2090415572733075,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 0.9273491,
-      "target_price": 1.0038315,
-      "strategy": "scoring-v3",
-      "entry_score": 2.209802168386397,
       "weak_scans": 1
     }
   ],
@@ -192,6 +179,25 @@
       "proceeds": 4.941206138743533,
       "profit": -0.058793861256466684,
       "reason": "MOMENTUM EXIT"
+    },
+    {
+      "symbol": "XRP",
+      "opened_at": "2026-11-03T12:41:30.020127+00:00",
+      "entry_price": 0.95603,
+      "quantity": 5.2090415572733075,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.9273491,
+      "target_price": 1.0038315,
+      "strategy": "scoring-v3",
+      "entry_score": 2.209802168386397,
+      "weak_scans": 1,
+      "closed_at": "2026-11-04T01:40:44.306535+00:00",
+      "exit_price": 0.92635,
+      "exit_fee": 0.019301582586320514,
+      "proceeds": 4.806094063993808,
+      "profit": -0.19390593600619166,
+      "reason": "STOP LOSS"
     }
   ]
 }
