@@ -15,7 +15,8 @@
       "stop_price": 57893.383,
       "target_price": 62668.095,
       "strategy": "scoring-v3",
-      "entry_score": 1.540449107069911
+      "entry_score": 1.540449107069911,
+      "weak_scans": 0
     },
     {
       "symbol": "DOT",
@@ -27,7 +28,8 @@
       "stop_price": 0.699467,
       "target_price": 0.757155,
       "strategy": "scoring-v3",
-      "entry_score": 1.0875296941956263
+      "entry_score": 1.0875296941956263,
+      "weak_scans": 0
     }
   ],
   "closed_trades": [
