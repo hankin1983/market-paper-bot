@@ -1,23 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 18.70883284,
+  "cash_balance": 23.92891415,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
   "open_positions": [
-    {
-      "symbol": "ALGO",
-      "opened_at": "2026-11-03T11:50:32.976025+00:00",
-      "entry_price": 0.06925,
-      "quantity": 71.91335740072202,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 0.06717250000000001,
-      "target_price": 0.07271250000000001,
-      "strategy": "scoring-v3",
-      "entry_score": 1.0507179748747226,
-      "weak_scans": 1
-    },
     {
       "symbol": "ETH",
       "opened_at": "2026-11-04T06:33:58.033068+00:00",
@@ -211,6 +198,25 @@
       "proceeds": 4.806094063993808,
       "profit": -0.19390593600619166,
       "reason": "STOP LOSS"
+    },
+    {
+      "symbol": "ALGO",
+      "opened_at": "2026-11-03T11:50:32.976025+00:00",
+      "entry_price": 0.06925,
+      "quantity": 71.91335740072202,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.06717250000000001,
+      "target_price": 0.07271250000000001,
+      "strategy": "scoring-v3",
+      "entry_score": 1.0507179748747226,
+      "weak_scans": 1,
+      "closed_at": "2026-11-04T14:35:36.015027+00:00",
+      "exit_price": 0.07288,
+      "exit_fee": 0.020964181949458486,
+      "proceeds": 5.220081305415163,
+      "profit": 0.2200813054151629,
+      "reason": "TAKE PROFIT"
     }
   ]
 }
