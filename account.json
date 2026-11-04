@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 23.70883284,
+  "cash_balance": 18.70883284,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -17,6 +17,18 @@
       "strategy": "scoring-v3",
       "entry_score": 1.0507179748747226,
       "weak_scans": 0
+    },
+    {
+      "symbol": "ETH",
+      "opened_at": "2026-11-04T06:33:58.033068+00:00",
+      "entry_price": 1705.21,
+      "quantity": 0.002920461409445171,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1654.0537,
+      "target_price": 1790.4705000000001,
+      "strategy": "scoring-v3",
+      "entry_score": 1.2053446619243477
     }
   ],
   "closed_trades": [
