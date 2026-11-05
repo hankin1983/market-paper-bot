@@ -1,36 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 18.93863307,
+  "cash_balance": 28.55741045,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [
-    {
-      "symbol": "BTC",
-      "opened_at": "2026-11-04T15:28:55.165190+00:00",
-      "entry_price": 59683.9,
-      "quantity": 8.343958756046438e-05,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 57893.383,
-      "target_price": 62668.095,
-      "strategy": "scoring-v3",
-      "entry_score": 1.540449107069911,
-      "weak_scans": 0
-    },
-    {
-      "symbol": "ATOM",
-      "opened_at": "2026-11-05T14:01:57.540541+00:00",
-      "entry_price": 1.1279,
-      "quantity": 4.415285043000266,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 1.0940629999999998,
-      "target_price": 1.1842949999999999,
-      "strategy": "scoring-v3",
-      "entry_score": 1.6632812801601644
-    }
-  ],
+  "open_positions": [],
   "closed_trades": [
     {
       "symbol": "BTC",
@@ -266,6 +240,43 @@
       "exit_fee": 0.01912165303009292,
       "proceeds": 4.761291604493136,
       "profit": -0.23870839550686362,
+      "reason": "STOP LOSS"
+    },
+    {
+      "symbol": "BTC",
+      "opened_at": "2026-11-04T15:28:55.165190+00:00",
+      "entry_price": 59683.9,
+      "quantity": 8.343958756046438e-05,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 57893.383,
+      "target_price": 62668.095,
+      "strategy": "scoring-v3",
+      "entry_score": 1.540449107069911,
+      "weak_scans": 0,
+      "closed_at": "2026-11-05T14:58:00.750555+00:00",
+      "exit_price": 57888.3,
+      "exit_fee": 0.019320703506305725,
+      "proceeds": 4.810855173070125,
+      "profit": -0.18914482692987544,
+      "reason": "STOP LOSS"
+    },
+    {
+      "symbol": "ATOM",
+      "opened_at": "2026-11-05T14:01:57.540541+00:00",
+      "entry_price": 1.1279,
+      "quantity": 4.415285043000266,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1.0940629999999998,
+      "target_price": 1.1842949999999999,
+      "strategy": "scoring-v3",
+      "entry_score": 1.6632812801601644,
+      "closed_at": "2026-11-05T14:58:00.750555+00:00",
+      "exit_price": 1.0933,
+      "exit_fee": 0.019308924550048765,
+      "proceeds": 4.807922212962143,
+      "profit": -0.19207778703785738,
       "reason": "STOP LOSS"
     }
   ]
