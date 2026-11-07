@@ -28,7 +28,8 @@
       "stop_price": 0.06977209999999999,
       "target_price": 0.0755265,
       "strategy": "scoring-v3",
-      "entry_score": 1.0026373329730651
+      "entry_score": 1.0026373329730651,
+      "weak_scans": 0
     }
   ],
   "closed_trades": [
