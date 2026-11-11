@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 22.98817078,
+  "cash_balance": 2.98817078,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -16,6 +16,58 @@
       "target_price": 0.1403955,
       "strategy": "scoring-v3.1",
       "entry_score": 1.0595688765132183,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "XLM",
+      "opened_at": "2026-11-11T17:32:39.409009+00:00",
+      "entry_price": 0.11369,
+      "quantity": 43.80332483067993,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.1102793,
+      "target_price": 0.11937450000000001,
+      "strategy": "scoring-v3.1",
+      "entry_score": 2.696331994402917,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "SOL",
+      "opened_at": "2026-11-11T17:32:39.409009+00:00",
+      "entry_price": 64.23,
+      "quantity": 0.07753386268099019,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 62.3031,
+      "target_price": 67.4415,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.6818014095712241,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "ETH",
+      "opened_at": "2026-11-11T17:32:39.409009+00:00",
+      "entry_price": 1573.24,
+      "quantity": 0.003165442017746816,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1526.0428,
+      "target_price": 1651.902,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.603704636703728,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "LINK",
+      "opened_at": "2026-11-11T17:32:39.409009+00:00",
+      "entry_price": 7.917,
+      "quantity": 0.6290261462675256,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 7.6794899999999995,
+      "target_price": 8.312850000000001,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.5697635518782167,
       "weak_scans": 0
     }
   ],
