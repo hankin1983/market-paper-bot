@@ -1,23 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 12.56418913,
+  "cash_balance": 17.44191644,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
   "open_positions": [
-    {
-      "symbol": "ADA",
-      "opened_at": "2026-11-11T14:39:03.052969+00:00",
-      "entry_price": 0.13371,
-      "quantity": 37.24478348665022,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 0.1296987,
-      "target_price": 0.1403955,
-      "strategy": "scoring-v3.1",
-      "entry_score": 1.0595688765132183,
-      "weak_scans": 1
-    },
     {
       "symbol": "SOL",
       "opened_at": "2026-11-11T17:32:39.409009+00:00",
@@ -29,7 +16,7 @@
       "target_price": 67.4415,
       "strategy": "scoring-v3.1",
       "entry_score": 1.6818014095712241,
-      "weak_scans": 1
+      "weak_scans": 0
     },
     {
       "symbol": "ETH",
@@ -42,7 +29,7 @@
       "target_price": 1651.902,
       "strategy": "scoring-v3.1",
       "entry_score": 1.603704636703728,
-      "weak_scans": 1
+      "weak_scans": 0
     }
   ],
   "closed_trades": [
@@ -413,6 +400,25 @@
       "proceeds": 4.772126987495263,
       "profit": -0.22787301250473657,
       "reason": "STOP LOSS"
+    },
+    {
+      "symbol": "ADA",
+      "opened_at": "2026-11-11T14:39:03.052969+00:00",
+      "entry_price": 0.13371,
+      "quantity": 37.24478348665022,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.1296987,
+      "target_price": 0.1403955,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.0595688765132183,
+      "weak_scans": 2,
+      "closed_at": "2026-11-12T00:04:05.457339+00:00",
+      "exit_price": 0.13149,
+      "exit_fee": 0.019589266322638552,
+      "proceeds": 4.877727314336999,
+      "profit": -0.12227268566300076,
+      "reason": "SCORE EXIT"
     }
   ]
 }
