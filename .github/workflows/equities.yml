@@ -1,0 +1,36 @@
+name: Equities paper replay
+on:
+  workflow_dispatch:
+    inputs:
+      data_file:
+        description: Path to a timestamped replay JSON file in this branch
+        required: true
+        type: string
+      as_of:
+        description: ISO 8601 cutoff with offset (UTC Z accepted)
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test equities simulator
+        run: python -m unittest -v test_equities.py
+      - name: Replay imported market data
+        env:
+          INPUT_FILE: ${{ inputs.data_file }}
+          CUTOFF: ${{ inputs.as_of }}
+        run: python equities.py --as-of="$CUTOFF" -- "$INPUT_FILE" > equities-ledger.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: equities-paper-ledger
+          path: equities-ledger.json
