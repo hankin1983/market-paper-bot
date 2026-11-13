@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 22.03446582,
+  "cash_balance": 17.03446582,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -16,6 +16,19 @@
       "target_price": 39.04944750000001,
       "strategy": "scoring-v3.1",
       "entry_score": 1.1871293923187458,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "XLM",
+      "opened_at": "2026-11-13T14:20:12.058346+00:00",
+      "entry_price": 0.11338,
+      "quantity": 43.923090492150294,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.1099786,
+      "target_price": 0.119049,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.8364290205793707,
       "weak_scans": 0
     }
   ],
