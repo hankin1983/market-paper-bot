@@ -16,7 +16,7 @@
       "target_price": 39.04944750000001,
       "strategy": "scoring-v3.1",
       "entry_score": 1.1871293923187458,
-      "weak_scans": 1
+      "weak_scans": 0
     },
     {
       "symbol": "XLM",
@@ -29,7 +29,7 @@
       "target_price": 0.119049,
       "strategy": "scoring-v3.1",
       "entry_score": 1.8364290205793707,
-      "weak_scans": 0
+      "weak_scans": 1
     }
   ],
   "closed_trades": [
