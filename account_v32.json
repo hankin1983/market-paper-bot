@@ -6,11 +6,31 @@
   "cash_balance": 30.0,
   "open_positions": [],
   "closed_trades": [],
-  "started_at": null,
-  "last_scan": null,
-  "last_entry_slot": null,
+  "started_at": "2026-11-14T18:57:28.905090+00:00",
+  "last_scan": "2026-11-14T18:57:28.905090+00:00",
+  "last_entry_slot": 997045,
   "comparison": {
-    "baseline": {},
-    "v32": {}
+    "baseline": {
+      "start": 26.63750039,
+      "peak": 26.63750039,
+      "max_drawdown": 0.0,
+      "return": 0.0,
+      "closed_trades": 0,
+      "win_rate": null,
+      "fees": 0,
+      "spread_cost": null
+    },
+    "v32": {
+      "start": 30.0,
+      "peak": 30.0,
+      "max_drawdown": 0.0,
+      "return": 0.0,
+      "closed_trades": 0,
+      "win_rate": null,
+      "fees": 0,
+      "spread_cost": 0
+    },
+    "marked_at": "2026-11-14T18:57:28.905090+00:00",
+    "sample": "collecting"
   }
 }
