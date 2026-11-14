@@ -1,0 +1,16 @@
+{
+  "strategy": "scoring-v3.2",
+  "mode": "PAPER",
+  "currency": "GBP",
+  "starting_balance": 30.0,
+  "cash_balance": 30.0,
+  "open_positions": [],
+  "closed_trades": [],
+  "started_at": null,
+  "last_scan": null,
+  "last_entry_slot": null,
+  "comparison": {
+    "baseline": {},
+    "v32": {}
+  }
+}

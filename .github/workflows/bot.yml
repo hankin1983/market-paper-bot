@@ -15,6 +15,7 @@ concurrency:
 
 jobs:
   paper-trade:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -33,12 +34,23 @@ jobs:
       - name: Run automatic paper trading bot
         run: python bot.py
 
+      - name: Run parallel paper strategy and report comparison
+        id: parallel
+        continue-on-error: true
+        timeout-minutes: 2
+        run: python strategy_v32.py
+
       - name: Save trading account and price history
+        env:
+          PARALLEL_OUTCOME: ${{ steps.parallel.outcome }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add account.json price_history.json
+          if [ "$PARALLEL_OUTCOME" = "success" ]; then
+            git add account_v32.json
+          fi
 
           if git diff --cached --quiet; then
             echo "No changes to save."
