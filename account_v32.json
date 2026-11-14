@@ -7,8 +7,8 @@
   "open_positions": [],
   "closed_trades": [],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-14T20:13:05.905157+00:00",
-  "last_entry_slot": 997048,
+  "last_scan": "2026-11-14T20:58:02.840183+00:00",
+  "last_entry_slot": 997049,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
@@ -30,7 +30,7 @@
       "fees": 0,
       "spread_cost": 0
     },
-    "marked_at": "2026-11-14T20:13:05.905157+00:00",
+    "marked_at": "2026-11-14T20:58:02.840183+00:00",
     "sample": "collecting"
   }
 }
