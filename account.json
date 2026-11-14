@@ -1,24 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 21.8436173,
+  "cash_balance": 26.63750039,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [
-    {
-      "symbol": "LTC",
-      "opened_at": "2026-11-13T11:55:52.928752+00:00",
-      "entry_price": 37.18995,
-      "quantity": 0.13390714426881456,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 36.0742515,
-      "target_price": 39.04944750000001,
-      "strategy": "scoring-v3.1",
-      "entry_score": 1.1871293923187458,
-      "weak_scans": 0
-    }
-  ],
+  "open_positions": [],
   "closed_trades": [
     {
       "symbol": "BTC",
@@ -462,6 +448,25 @@
       "exit_fee": 0.019313861351208328,
       "proceeds": 4.809151476450873,
       "profit": -0.19084852354912663,
+      "reason": "STOP LOSS"
+    },
+    {
+      "symbol": "LTC",
+      "opened_at": "2026-11-13T11:55:52.928752+00:00",
+      "entry_price": 37.18995,
+      "quantity": 0.13390714426881456,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 36.0742515,
+      "target_price": 39.04944750000001,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.1871293923187458,
+      "weak_scans": 0,
+      "closed_at": "2026-11-14T13:29:36.117366+00:00",
+      "exit_price": 35.94383,
+      "exit_fee": 0.01925254251753498,
+      "proceeds": 4.79388308686621,
+      "profit": -0.20611691313378966,
       "reason": "STOP LOSS"
     }
   ]
