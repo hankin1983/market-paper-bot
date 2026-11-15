@@ -86,7 +86,7 @@
   ],
   "closed_trades": [],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-15T20:40:42.967859+00:00",
+  "last_scan": "2026-11-15T21:23:11.717370+00:00",
   "last_entry_slot": 997083,
   "comparison": {
     "baseline": {
@@ -103,13 +103,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.015208553553781923,
-      "return": -0.008370993513930669,
+      "return": -0.013580660966772684,
       "closed_trades": 0,
       "win_rate": null,
       "fees": 0.12,
       "spread_cost": 0.010328024921417782
     },
-    "marked_at": "2026-11-15T20:40:42.967859+00:00",
+    "marked_at": "2026-11-15T21:23:11.717370+00:00",
     "sample": "collecting"
   }
 }
