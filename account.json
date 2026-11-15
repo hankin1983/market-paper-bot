@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 21.63750039,
+  "cash_balance": 1.63750039,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -16,6 +16,58 @@
       "target_price": 0.12260850000000001,
       "strategy": "scoring-v3.1",
       "entry_score": 1.4903084475326591,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "XRP",
+      "opened_at": "2026-11-15T22:56:37.640925+00:00",
+      "entry_price": 0.73329,
+      "quantity": 6.791310395614287,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.7112913,
+      "target_price": 0.7699545,
+      "strategy": "scoring-v3.1",
+      "entry_score": 2.0600117529699755,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "XLM",
+      "opened_at": "2026-11-15T22:56:37.640925+00:00",
+      "entry_price": 0.10676,
+      "quantity": 46.64668415136756,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.10355719999999999,
+      "target_price": 0.112098,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.447045933113533,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "DOGE",
+      "opened_at": "2026-11-15T22:56:37.640925+00:00",
+      "entry_price": 0.0449035,
+      "quantity": 110.90449519525205,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.043556395,
+      "target_price": 0.047148675,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.3788717795329293,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "SOL",
+      "opened_at": "2026-11-15T22:56:37.640925+00:00",
+      "entry_price": 54.74,
+      "quantity": 0.09097552064303983,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 53.0978,
+      "target_price": 57.477000000000004,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.3438243773714218,
       "weak_scans": 0
     }
   ],
