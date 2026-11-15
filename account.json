@@ -1,10 +1,24 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 26.63750039,
+  "cash_balance": 21.63750039,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [],
+  "open_positions": [
+    {
+      "symbol": "ADA",
+      "opened_at": "2026-11-15T22:13:46.231473+00:00",
+      "entry_price": 0.11677,
+      "quantity": 42.64794039564957,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.11326689999999999,
+      "target_price": 0.12260850000000001,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.4903084475326591,
+      "weak_scans": 0
+    }
+  ],
   "closed_trades": [
     {
       "symbol": "BTC",
