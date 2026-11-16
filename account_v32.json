@@ -3,33 +3,20 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 19.73176399,
+  "cash_balance": 24.54985404,
   "open_positions": [
     {
       "strategy": "scoring-v3.2",
-      "symbol": "BTC",
-      "opened_at": "2026-11-15T13:31:27.889879+00:00",
-      "entry_price": 49718.1,
+      "symbol": "XRP",
+      "opened_at": "2026-11-16T15:06:00.548229+00:00",
+      "entry_price": 0.72477,
       "entry_fee": 0.02,
-      "entry_spread_cost": 0.0008564084307323969,
-      "quantity": 0.00010016472874063974,
+      "entry_spread_cost": 0.0023361894118134508,
+      "quantity": 6.87114532886295,
       "cost": 5.0,
-      "peak_bid": 49701.0,
-      "stop_price": 48475.1475,
-      "target_price": 52204.005
-    },
-    {
-      "strategy": "scoring-v3.2",
-      "symbol": "ETH",
-      "opened_at": "2026-11-15T13:31:27.889879+00:00",
-      "entry_price": 1392.16,
-      "entry_fee": 0.02,
-      "entry_spread_cost": 0.001019494885645621,
-      "quantity": 0.0035771750373520287,
-      "cost": 5.0,
-      "peak_bid": 1391.59,
-      "stop_price": 1357.356,
-      "target_price": 1461.7680000000003
+      "peak_bid": 0.72409,
+      "stop_price": 0.70665075,
+      "target_price": 0.7610085000000001
     }
   ],
   "closed_trades": [
@@ -112,17 +99,57 @@
       "proceeds": 4.941841522942535,
       "profit": -0.05815847705746524,
       "reason": "TIME EXIT"
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "BTC",
+      "opened_at": "2026-11-15T13:31:27.889879+00:00",
+      "entry_price": 49718.1,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0008564084307323969,
+      "quantity": 0.00010016472874063974,
+      "cost": 5.0,
+      "peak_bid": 49701.0,
+      "stop_price": 48475.1475,
+      "target_price": 52204.005,
+      "exit_spread_cost": 0.0012821085278801158,
+      "closed_at": "2026-11-16T15:06:00.548229+00:00",
+      "exit_price": 49093.9,
+      "exit_fee": 0.019669908705280376,
+      "proceeds": 4.897807267614813,
+      "profit": -0.10219273238518678,
+      "reason": "TIME EXIT"
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "ETH",
+      "opened_at": "2026-11-15T13:31:27.889879+00:00",
+      "entry_price": 1392.16,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.001019494885645621,
+      "quantity": 0.0035771750373520287,
+      "cost": 5.0,
+      "peak_bid": 1391.59,
+      "stop_price": 1357.356,
+      "target_price": 1461.7680000000003,
+      "exit_spread_cost": 0.0021999626479715303,
+      "closed_at": "2026-11-16T15:06:00.548229+00:00",
+      "exit_price": 1380.99,
+      "exit_fee": 0.019760171819331113,
+      "proceeds": 4.920282783013447,
+      "profit": -0.07971721698655276,
+      "reason": "TIME EXIT"
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-16T11:53:00.675318+00:00",
-  "last_entry_slot": 997127,
+  "last_scan": "2026-11-16T15:06:00.548229+00:00",
+  "last_entry_slot": 997134,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 26.63750039,
       "max_drawdown": 0.02787152071790855,
-      "return": -0.016764972097668696,
+      "return": -0.02015622699258679,
       "closed_trades": 0,
       "win_rate": null,
       "fees": 0.1,
@@ -132,13 +159,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.025818301182136905,
-      "return": -0.01666100272022719,
-      "closed_trades": 4,
+      "return": -0.016490654976944463,
+      "closed_trades": 6,
       "win_rate": 0.0,
-      "fees": 0.19924403208759495,
-      "spread_cost": 0.0192100300535035
+      "fees": 0.25867411261220646,
+      "spread_cost": 0.0250282906411686
     },
-    "marked_at": "2026-11-16T11:53:00.675318+00:00",
+    "marked_at": "2026-11-16T15:06:00.548229+00:00",
     "sample": "collecting"
   }
 }
