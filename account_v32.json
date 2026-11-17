@@ -3,20 +3,33 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 24.19141181,
+  "cash_balance": 19.2366649,
   "open_positions": [
     {
       "strategy": "scoring-v3.2",
-      "symbol": "LINK",
-      "opened_at": "2026-11-16T23:20:49.065023+00:00",
-      "entry_price": 6.93,
+      "symbol": "ETH",
+      "opened_at": "2026-11-17T23:35:47.847037+00:00",
+      "entry_price": 1380.16,
       "entry_fee": 0.02,
-      "entry_spread_cost": 0.0021558441558439186,
-      "quantity": 0.7186147186147187,
+      "entry_spread_cost": 0.0003608277301183292,
+      "quantity": 0.0036082773011824718,
       "cost": 5.0,
-      "peak_bid": 7.07,
-      "stop_price": 6.756749999999999,
-      "target_price": 7.2765
+      "peak_bid": 1379.96,
+      "stop_price": 1345.656,
+      "target_price": 1449.1680000000001
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "ADA",
+      "opened_at": "2026-11-17T23:35:47.847037+00:00",
+      "entry_price": 0.11759,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.001694021600476162,
+      "quantity": 42.35054001190578,
+      "cost": 5.0,
+      "peak_bid": 0.11751,
+      "stop_price": 0.11465025,
+      "target_price": 0.12346950000000001
     }
   ],
   "closed_trades": [
@@ -219,33 +232,53 @@
       "proceeds": 4.834539513647644,
       "profit": -0.1654604863523561,
       "reason": "STOP LOSS"
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "LINK",
+      "opened_at": "2026-11-16T23:20:49.065023+00:00",
+      "entry_price": 6.93,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0021558441558439186,
+      "quantity": 0.7186147186147187,
+      "cost": 5.0,
+      "peak_bid": 7.07,
+      "stop_price": 6.756749999999999,
+      "target_price": 7.2765,
+      "exit_spread_cost": 0.0021558441558439186,
+      "closed_at": "2026-11-17T23:35:47.847037+00:00",
+      "exit_price": 7.049,
+      "exit_fee": 0.020262060606060613,
+      "proceeds": 5.0452530909090925,
+      "profit": 0.045253090909092464,
+      "reason": "TIME EXIT"
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-17T22:39:03.778340+00:00",
-  "last_entry_slot": 997197,
+  "last_scan": "2026-11-17T23:35:47.847037+00:00",
+  "last_entry_slot": 997199,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 26.63750039,
       "max_drawdown": 0.02787152071790855,
-      "return": -0.011100852346533907,
-      "closed_trades": 3,
-      "win_rate": 0.0,
-      "fees": 0.15888141749692947,
+      "return": -0.00560456641254703,
+      "closed_trades": 5,
+      "win_rate": 0.4,
+      "fees": 0.1998020415766541,
       "spread_cost": null
     },
     "v32": {
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.029667370835497753,
-      "return": -0.02661354572727259,
-      "closed_trades": 10,
-      "win_rate": 0.2,
-      "fees": 0.417555870739502,
-      "spread_cost": 0.034879439001116216
+      "return": -0.028242278662218068,
+      "closed_trades": 11,
+      "win_rate": 0.2727272727272727,
+      "fees": 0.4778179313455626,
+      "spread_cost": 0.03909013248755462
     },
-    "marked_at": "2026-11-17T22:39:03.778340+00:00",
+    "marked_at": "2026-11-17T23:35:47.847037+00:00",
     "sample": "collecting"
   }
 }
