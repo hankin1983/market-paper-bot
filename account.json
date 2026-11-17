@@ -16,7 +16,7 @@
       "target_price": 0.12260850000000001,
       "strategy": "scoring-v3.1",
       "entry_score": 1.4903084475326591,
-      "weak_scans": 1
+      "weak_scans": 0
     },
     {
       "symbol": "XRP",
