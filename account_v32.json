@@ -3,21 +3,8 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 4.54985404,
+  "cash_balance": 9.55927683,
   "open_positions": [
-    {
-      "strategy": "scoring-v3.2",
-      "symbol": "XRP",
-      "opened_at": "2026-11-16T15:06:00.548229+00:00",
-      "entry_price": 0.72477,
-      "entry_fee": 0.02,
-      "entry_spread_cost": 0.0023361894118134508,
-      "quantity": 6.87114532886295,
-      "cost": 5.0,
-      "peak_bid": 0.73938,
-      "stop_price": 0.70665075,
-      "target_price": 0.7610085000000001
-    },
     {
       "strategy": "scoring-v3.2",
       "symbol": "SOL",
@@ -191,17 +178,37 @@
       "proceeds": 4.920282783013447,
       "profit": -0.07971721698655276,
       "reason": "TIME EXIT"
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "XRP",
+      "opened_at": "2026-11-16T15:06:00.548229+00:00",
+      "entry_price": 0.72477,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0023361894118134508,
+      "quantity": 6.87114532886295,
+      "cost": 5.0,
+      "peak_bid": 0.73938,
+      "stop_price": 0.70665075,
+      "target_price": 0.7610085000000001,
+      "exit_spread_cost": 0.00034355726644310963,
+      "closed_at": "2026-11-17T15:38:53.443524+00:00",
+      "exit_price": 0.73198,
+      "exit_fee": 0.020118163831284407,
+      "proceeds": 5.009422793989817,
+      "profit": 0.009422793989816824,
+      "reason": "TIME EXIT"
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-17T14:37:35.021733+00:00",
-  "last_entry_slot": 997163,
+  "last_scan": "2026-11-17T15:38:53.443524+00:00",
+  "last_entry_slot": 997183,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 26.63750039,
       "max_drawdown": 0.02787152071790855,
-      "return": -0.006035046476403405,
+      "return": -0.014287920328229786,
       "closed_trades": 1,
       "win_rate": 0.0,
       "fees": 0.1193023979018359,
@@ -211,13 +218,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.025818301182136905,
-      "return": -0.011610502742935846,
-      "closed_trades": 6,
-      "win_rate": 0.0,
-      "fees": 0.3386741126122064,
-      "spread_cost": 0.03061176199582299
+      "return": -0.02156922031532127,
+      "closed_trades": 7,
+      "win_rate": 0.14285714285714285,
+      "fees": 0.3587922764434909,
+      "spread_cost": 0.0309553192622661
     },
-    "marked_at": "2026-11-17T14:37:35.021733+00:00",
+    "marked_at": "2026-11-17T15:38:53.443524+00:00",
     "sample": "collecting"
   }
 }
