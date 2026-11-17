@@ -16,7 +16,7 @@
       "target_price": 0.12260850000000001,
       "strategy": "scoring-v3.1",
       "entry_score": 1.4903084475326591,
-      "weak_scans": 0
+      "weak_scans": 1
     },
     {
       "symbol": "XRP",
@@ -42,7 +42,7 @@
       "target_price": 0.047148675,
       "strategy": "scoring-v3.1",
       "entry_score": 1.3788717795329293,
-      "weak_scans": 0
+      "weak_scans": 1
     },
     {
       "symbol": "SOL",
