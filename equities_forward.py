@@ -92,6 +92,8 @@ def instrument_scan(row, session, account, key, tracking, fx, costs, now):
         if kind == "split":
             position.shares *= amount
             position.mark /= amount
+            if tracking.get("entry_price"):
+                tracking["entry_price"] = str(D(tracking["entry_price"]) / amount)
         else:
             amount *= position.shares
             account.cash += amount
@@ -103,7 +105,28 @@ def instrument_scan(row, session, account, key, tracking, fx, costs, now):
         position.mark = price * rate
         position.mark_at = at
 
+    risk = row.get("risk")
+    exit_reason = None
+    if position and risk:
+        entry = positive(tracking["entry_price"])
+        change = price / entry - 1
+        if change <= -positive(risk["stop"]):
+            exit_reason = "STOP LOSS"
+        elif change >= positive(risk["target"]):
+            exit_reason = "TAKE PROFIT"
+        elif now - timestamp(tracking["opened_at"]) >= timedelta(hours=risk["max_hours"]):
+            exit_reason = "TIME EXIT"
+        if exit_reason:
+            account.trade(key, "SELL", now, Bar(price, price, available, available),
+                          model, rate, rate_at, unit == "USD", D(10))
+            account.events[-1].update(reason=exit_reason, quote_at=at.isoformat())
+            tracking.update(quote_at=at.isoformat(), price=str(price), unit=unit,
+                            session=session.opened.isoformat(), signal=None)
+            return exit_reason
+
     prior = tracking.get("signal")
+    if risk and prior and prior["side"] == "SELL":
+        prior = None
     if prior and (timestamp(prior["session"]) != session.opened or actions):
         prior = None
     if prior and timestamp(prior["observed_at"]) < at:
@@ -116,14 +139,17 @@ def instrument_scan(row, session, account, key, tracking, fx, costs, now):
             if event["instrument"] == key:
                 event["quote_at"] = at.isoformat()
                 event["signal_observed_at"] = prior["observed_at"]
+                if event["event"] == "BUY":
+                    tracking.update(entry_price=event["price"], opened_at=event["at"])
         prior = None
 
     signal = None
     previous = tracking.get("price")
     if previous and tracking.get("session") == session.opened.isoformat() and not actions:
-        if price > D(previous) and key not in account.positions:
+        minimum_rise = D(str(risk["min_rise"])) if risk else D(0)
+        if price > D(previous) and price / D(previous) - 1 >= minimum_rise and key not in account.positions:
             signal = "BUY"
-        elif price < D(previous) and key in account.positions:
+        elif not risk and price < D(previous) and key in account.positions:
             signal = "SELL"
     if not prior and signal:
         prior = dict(side=signal, session=session.opened.isoformat(), observed_at=now.isoformat())
@@ -158,6 +184,12 @@ def scan(snapshot, state, now):
             status[key] = "Unexpected quote unit"
             continue
         tracking = state["instruments"].setdefault(key, {})
+        if row.get("risk") and key in accounts[region].positions and not tracking.get("entry_price"):
+            buys = [event for event in state["accounts"][region]["events"]
+                    if event["event"] == "BUY" and event["instrument"] == key]
+            if not buys:
+                raise ValueError("Held stock has no recorded entry")
+            tracking.update(entry_price=buys[-1]["price"], opened_at=buys[-1]["at"])
         try:
             status[key] = instrument_scan(row, session, accounts[region], key, tracking,
                                           rates, snapshot["costs"][key], now)

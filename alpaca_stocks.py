@@ -123,6 +123,7 @@ def snapshot(state, now):
         key = venue + ":" + symbol
         base["instruments"].append(dict(
             venue=venue, symbol=symbol, unit="USD",
+            risk=dict(stop="0.01", target="0.02", max_hours=2, min_rise="0.01"),
             status="trading" if asset["tradable"] and not blocked else "unavailable",
             quote=dict(at=trade["t"], available_at=received.isoformat(), price=str(positive(trade["p"]))),
             actions=actions, actions_complete_from=start + "T00:00:00+00:00",
