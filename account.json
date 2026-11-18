@@ -1,10 +1,24 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 26.48820875,
+  "cash_balance": 21.48820875,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
-  "open_positions": [],
+  "open_positions": [
+    {
+      "symbol": "XRP",
+      "opened_at": "2026-11-18T08:34:08.657691+00:00",
+      "entry_price": 0.76128,
+      "quantity": 6.541614123581337,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.7384415999999999,
+      "target_price": 0.7993439999999999,
+      "strategy": "scoring-v3.1",
+      "entry_score": 2.6073087645113953,
+      "weak_scans": 0
+    }
+  ],
   "closed_trades": [
     {
       "symbol": "BTC",
