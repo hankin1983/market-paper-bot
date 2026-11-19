@@ -14,7 +14,7 @@
       "entry_spread_cost": 0.0021441487987600718,
       "quantity": 42.88297597520021,
       "cost": 5.0,
-      "peak_bid": 0.11706,
+      "peak_bid": 0.11819,
       "stop_price": 0.11322675,
       "target_price": 0.1219365
     },
@@ -27,7 +27,7 @@
       "entry_spread_cost": 0.0017864829961256614,
       "quantity": 0.7145931984502798,
       "cost": 5.0,
-      "peak_bid": 6.983,
+      "peak_bid": 7.021,
       "stop_price": 6.7947750000000005,
       "target_price": 7.317450000000001
     },
@@ -53,7 +53,7 @@
       "entry_spread_cost": 0.00025431889809753207,
       "quantity": 0.003633127115676433,
       "cost": 5.0,
-      "peak_bid": 1371.3,
+      "peak_bid": 1374.56,
       "stop_price": 1336.452,
       "target_price": 1439.256
     }
@@ -361,8 +361,8 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-19T12:34:38.664040+00:00",
-  "last_entry_slot": 997273,
+  "last_scan": "2026-11-19T13:53:49.347067+00:00",
+  "last_entry_slot": 997275,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
@@ -378,13 +378,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.0568802904234329,
-      "return": -0.0568802904234329,
+      "return": -0.05114169618457021,
       "closed_trades": 15,
       "win_rate": 0.2,
       "fees": 0.6751832946018245,
       "spread_cost": 0.06468263672208312
     },
-    "marked_at": "2026-11-19T12:34:38.664040+00:00",
+    "marked_at": "2026-11-19T13:53:49.347067+00:00",
     "sample": "collecting"
   }
 }
