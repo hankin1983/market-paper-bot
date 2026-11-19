@@ -3,7 +3,7 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 18.50064035,
+  "cash_balance": 13.50064035,
   "open_positions": [
     {
       "strategy": "scoring-v3.2",
@@ -14,7 +14,7 @@
       "entry_spread_cost": 0.0021441487987600718,
       "quantity": 42.88297597520021,
       "cost": 5.0,
-      "peak_bid": 0.11688,
+      "peak_bid": 0.11706,
       "stop_price": 0.11322675,
       "target_price": 0.1219365
     },
@@ -27,9 +27,22 @@
       "entry_spread_cost": 0.0017864829961256614,
       "quantity": 0.7145931984502798,
       "cost": 5.0,
-      "peak_bid": 6.964,
+      "peak_bid": 6.983,
       "stop_price": 6.7947750000000005,
       "target_price": 7.317450000000001
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "LTC",
+      "opened_at": "2026-11-19T09:28:13.708194+00:00",
+      "entry_price": 33.89157,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0018161684454277322,
+      "quantity": 0.14693919461388186,
+      "cost": 5.0,
+      "peak_bid": 33.86685,
+      "stop_price": 33.04428075,
+      "target_price": 35.5861485
     }
   ],
   "closed_trades": [
@@ -335,8 +348,8 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-19T08:07:15.457204+00:00",
-  "last_entry_slot": 997264,
+  "last_scan": "2026-11-19T09:28:13.708194+00:00",
+  "last_entry_slot": 997266,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
@@ -351,14 +364,14 @@
     "v32": {
       "start": 30.0,
       "peak": 30.0,
-      "max_drawdown": 0.051961330514945114,
-      "return": -0.051961330514945114,
+      "max_drawdown": 0.052435050899926505,
+      "return": -0.052435050899926505,
       "closed_trades": 15,
       "win_rate": 0.2,
-      "fees": 0.6351832946018245,
-      "spread_cost": 0.06261214937855786
+      "fees": 0.6551832946018245,
+      "spread_cost": 0.06442831782398559
     },
-    "marked_at": "2026-11-19T08:07:15.457204+00:00",
+    "marked_at": "2026-11-19T09:28:13.708194+00:00",
     "sample": "collecting"
   }
 }
