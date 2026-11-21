@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 11.28527225,
+  "cash_balance": 1.28527225,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -42,6 +42,32 @@
       "target_price": 0.1159305,
       "strategy": "scoring-v3.1",
       "entry_score": 1.4783466095972082,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "XRP",
+      "opened_at": "2026-11-21T17:09:50.114256+00:00",
+      "entry_price": 0.71215,
+      "quantity": 6.99290879730394,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.6907854999999999,
+      "target_price": 0.7477575,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.7798106615796618,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "ETH",
+      "opened_at": "2026-11-21T17:09:50.114256+00:00",
+      "entry_price": 1289.07,
+      "quantity": 0.003863250250180363,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 1250.3979,
+      "target_price": 1353.5235,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.5408623223425222,
       "weak_scans": 0
     }
   ],
