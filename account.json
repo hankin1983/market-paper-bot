@@ -1,23 +1,10 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 1.28527225,
+  "cash_balance": 1.08613981,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
   "open_positions": [
-    {
-      "symbol": "AAVE",
-      "opened_at": "2026-11-21T14:26:24.866803+00:00",
-      "entry_price": 76.95,
-      "quantity": 0.06471734892787524,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 74.64150000000001,
-      "target_price": 80.7975,
-      "strategy": "scoring-v3.1",
-      "entry_score": 1.9313370884515397,
-      "weak_scans": 0
-    },
     {
       "symbol": "SOL",
       "opened_at": "2026-11-21T14:26:24.866803+00:00",
@@ -68,6 +55,19 @@
       "target_price": 1353.5235,
       "strategy": "scoring-v3.1",
       "entry_score": 1.5408623223425222,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "BTC",
+      "opened_at": "2026-11-21T19:34:35.858901+00:00",
+      "entry_price": 46114.1,
+      "quantity": 0.00010799299997180907,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 44730.676999999996,
+      "target_price": 48419.805,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.0191847132795924,
       "weak_scans": 0
     }
   ],
@@ -647,6 +647,25 @@
       "exit_fee": 0.019265315258511984,
       "proceeds": 4.797063499369484,
       "profit": -0.20293650063051594,
+      "reason": "STOP LOSS"
+    },
+    {
+      "symbol": "AAVE",
+      "opened_at": "2026-11-21T14:26:24.866803+00:00",
+      "entry_price": 76.95,
+      "quantity": 0.06471734892787524,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 74.64150000000001,
+      "target_price": 80.7975,
+      "strategy": "scoring-v3.1",
+      "entry_score": 1.9313370884515397,
+      "weak_scans": 0,
+      "closed_at": "2026-11-21T19:34:35.858901+00:00",
+      "exit_price": 74.48,
+      "exit_fee": 0.019280592592592596,
+      "proceeds": 4.8008675555555556,
+      "profit": -0.19913244444444445,
       "reason": "STOP LOSS"
     }
   ]
