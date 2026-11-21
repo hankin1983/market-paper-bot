@@ -3,7 +3,7 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 22.61504415,
+  "cash_balance": 17.61504415,
   "open_positions": [
     {
       "strategy": "scoring-v3.2",
@@ -14,9 +14,22 @@
       "entry_spread_cost": 0.0003595817351557417,
       "quantity": 0.0001089641621684306,
       "cost": 5.0,
-      "peak_bid": 45696.5,
+      "peak_bid": 46142.5,
       "stop_price": 44560.5225,
       "target_price": 47988.255
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "LTC",
+      "opened_at": "2026-11-21T14:26:24.866803+00:00",
+      "entry_price": 30.71268,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.002617879651010569,
+      "quantity": 0.1621480118309441,
+      "cost": 5.0,
+      "peak_bid": 30.68039,
+      "stop_price": 29.944862999999998,
+      "target_price": 32.248314
     }
   ],
   "closed_trades": [
@@ -422,30 +435,30 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-21T13:27:36.965123+00:00",
-  "last_entry_slot": 997370,
+  "last_scan": "2026-11-21T14:26:24.866803+00:00",
+  "last_entry_slot": 997372,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 26.63750039,
       "max_drawdown": 0.02787152071790855,
-      "return": -0.013223017732258091,
+      "return": -0.017015187752125183,
       "closed_trades": 6,
       "win_rate": 0.3333333333333333,
-      "fees": 0.23906735683516608,
+      "fees": 0.2790673568351661,
       "spread_cost": null
     },
     "v32": {
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.0808530712272143,
-      "return": -0.0808530712272143,
+      "return": -0.08074411096064771,
       "closed_trades": 20,
       "win_rate": 0.15,
-      "fees": 0.8120282897483446,
-      "spread_cost": 0.07313750730610571
+      "fees": 0.8320282897483446,
+      "spread_cost": 0.07575538695711628
     },
-    "marked_at": "2026-11-21T13:27:36.965123+00:00",
+    "marked_at": "2026-11-21T14:26:24.866803+00:00",
     "sample": "collecting"
   }
 }
