@@ -3,7 +3,7 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 7.47068875,
+  "cash_balance": 2.47068875,
   "open_positions": [
     {
       "strategy": "scoring-v3.2",
@@ -27,7 +27,7 @@
       "entry_spread_cost": 0.0004627679345806148,
       "quantity": 0.0038563994548383106,
       "cost": 5.0,
-      "peak_bid": 1312.0,
+      "peak_bid": 1312.75,
       "stop_price": 1259.0759999999998,
       "target_price": 1355.9279999999999
     },
@@ -53,9 +53,22 @@
       "entry_spread_cost": 0.002036835546292429,
       "quantity": 0.16340437595606327,
       "cost": 5.0,
-      "peak_bid": 30.45161,
+      "peak_bid": 30.63903,
       "stop_price": 29.714626499999998,
       "target_price": 32.000367000000004
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "ADA",
+      "opened_at": "2026-11-22T16:23:28.155069+00:00",
+      "entry_price": 0.11119,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0031351740264412547,
+      "quantity": 44.78820037773181,
+      "cost": 5.0,
+      "peak_bid": 0.11105,
+      "stop_price": 0.10841025,
+      "target_price": 0.1167495
     }
   ],
   "closed_trades": [
@@ -501,14 +514,14 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-22T15:33:02.022667+00:00",
-  "last_entry_slot": 997423,
+  "last_scan": "2026-11-22T16:23:28.155069+00:00",
+  "last_entry_slot": 997424,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 26.63750039,
       "max_drawdown": 0.05091699021491103,
-      "return": -0.025914000602801135,
+      "return": -0.02261087881842705,
       "closed_trades": 7,
       "win_rate": 0.2857142857142857,
       "fees": 0.3783479494277587,
@@ -518,13 +531,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.09310034666587474,
-      "return": -0.08390065795488577,
+      "return": -0.08264606259352403,
       "closed_trades": 22,
       "win_rate": 0.18181818181818182,
-      "fees": 0.9516091917691503,
-      "spread_cost": 0.0841014208678044
+      "fees": 0.9716091917691503,
+      "spread_cost": 0.08723659489424565
     },
-    "marked_at": "2026-11-22T15:33:02.022667+00:00",
+    "marked_at": "2026-11-22T16:23:28.155069+00:00",
     "sample": "collecting"
   }
 }
