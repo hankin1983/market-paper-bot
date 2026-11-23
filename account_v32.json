@@ -3,21 +3,8 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 18.12127306,
+  "cash_balance": 23.42216618,
   "open_positions": [
-    {
-      "strategy": "scoring-v3.2",
-      "symbol": "ADA",
-      "opened_at": "2026-11-22T16:23:28.155069+00:00",
-      "entry_price": 0.11119,
-      "entry_fee": 0.02,
-      "entry_spread_cost": 0.0031351740264412547,
-      "quantity": 44.78820037773181,
-      "cost": 5.0,
-      "peak_bid": 0.11592,
-      "stop_price": 0.10841025,
-      "target_price": 0.1167495
-    },
     {
       "strategy": "scoring-v3.2",
       "symbol": "BTC",
@@ -27,7 +14,7 @@
       "entry_spread_cost": 0.00020726704601246515,
       "quantity": 0.00010629079282686555,
       "cost": 5.0,
-      "peak_bid": 48343.9,
+      "peak_bid": 48623.0,
       "stop_price": 45681.284999999996,
       "target_price": 49195.23
     }
@@ -572,33 +559,53 @@
       "proceeds": 5.247686614230839,
       "profit": 0.24768661423083937,
       "reason": "TAKE PROFIT"
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "ADA",
+      "opened_at": "2026-11-22T16:23:28.155069+00:00",
+      "entry_price": 0.11119,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0031351740264412547,
+      "quantity": 44.78820037773181,
+      "cost": 5.0,
+      "peak_bid": 0.11883,
+      "stop_price": 0.10841025,
+      "target_price": 0.1167495,
+      "exit_spread_cost": 0.002687292022663799,
+      "closed_at": "2026-11-23T15:28:31.118121+00:00",
+      "exit_price": 0.11883,
+      "exit_fee": 0.021288727403543487,
+      "proceeds": 5.300893123482328,
+      "profit": 0.3008931234823278,
+      "reason": "TAKE PROFIT"
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-23T14:10:39.676312+00:00",
-  "last_entry_slot": 997468,
+  "last_scan": "2026-11-23T15:28:31.118121+00:00",
+  "last_entry_slot": 997470,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
-      "peak": 27.221419486159473,
+      "peak": 27.38216916,
       "max_drawdown": 0.05091699021491103,
-      "return": 0.021920941815497086,
-      "closed_trades": 11,
-      "win_rate": 0.45454545454545453,
-      "fees": 0.4815919164503286,
+      "return": 0.027955654963765175,
+      "closed_trades": 13,
+      "win_rate": 0.5384615384615384,
+      "fees": 0.5240348142686657,
       "spread_cost": null
     },
     "v32": {
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.09310034666587474,
-      "return": -0.05298962438197141,
-      "closed_trades": 27,
-      "win_rate": 0.3333333333333333,
-      "fees": 1.114623586607419,
-      "spread_cost": 0.09570486890463752
+      "return": -0.047677643641926504,
+      "closed_trades": 28,
+      "win_rate": 0.35714285714285715,
+      "fees": 1.1359123140109624,
+      "spread_cost": 0.09839216092730131
     },
-    "marked_at": "2026-11-23T14:10:39.676312+00:00",
+    "marked_at": "2026-11-23T15:28:31.118121+00:00",
     "sample": "collecting"
   }
 }
