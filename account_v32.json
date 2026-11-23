@@ -14,7 +14,7 @@
       "entry_spread_cost": 0.002036835546292429,
       "quantity": 0.16340437595606327,
       "cost": 5.0,
-      "peak_bid": 31.0544,
+      "peak_bid": 31.19773,
       "stop_price": 29.714626499999998,
       "target_price": 32.000367000000004
     },
@@ -27,7 +27,7 @@
       "entry_spread_cost": 0.0031351740264412547,
       "quantity": 44.78820037773181,
       "cost": 5.0,
-      "peak_bid": 0.11153,
+      "peak_bid": 0.11162,
       "stop_price": 0.10841025,
       "target_price": 0.1167495
     },
@@ -40,7 +40,7 @@
       "entry_spread_cost": 0.0009109200658497857,
       "quantity": 0.09109200658496433,
       "cost": 5.0,
-      "peak_bid": 55.13,
+      "peak_bid": 55.49,
       "stop_price": 53.30325,
       "target_price": 57.4035
     },
@@ -53,7 +53,7 @@
       "entry_spread_cost": 0.00020726704601246515,
       "quantity": 0.00010629079282686555,
       "cost": 5.0,
-      "peak_bid": 46848.7,
+      "peak_bid": 46908.4,
       "stop_price": 45681.284999999996,
       "target_price": 49195.23
     }
@@ -561,30 +561,30 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-23T10:49:37.507916+00:00",
-  "last_entry_slot": 997461,
+  "last_scan": "2026-11-23T11:39:27.985653+00:00",
+  "last_entry_slot": 997463,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 26.63750039,
       "max_drawdown": 0.05091699021491103,
-      "return": -0.014275263178239683,
-      "closed_trades": 8,
-      "win_rate": 0.25,
-      "fees": 0.4178685144772567,
+      "return": -0.006644021280482693,
+      "closed_trades": 9,
+      "win_rate": 0.3333333333333333,
+      "fees": 0.4390929803000415,
       "spread_cost": null
     },
     "v32": {
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.09310034666587474,
-      "return": -0.0802620971255511,
+      "return": -0.07763103714337338,
       "closed_trades": 25,
       "win_rate": 0.28,
       "fees": 1.0724252562840815,
       "spread_cost": 0.09102301401771493
     },
-    "marked_at": "2026-11-23T10:49:37.507916+00:00",
+    "marked_at": "2026-11-23T11:39:27.985653+00:00",
     "sample": "collecting"
   }
 }
