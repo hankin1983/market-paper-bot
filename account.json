@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 5.94676051,
+  "cash_balance": 0.94676051,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -55,6 +55,19 @@
       "target_price": 48419.805,
       "strategy": "scoring-v3.1",
       "entry_score": 1.0191847132795924,
+      "weak_scans": 0
+    },
+    {
+      "symbol": "ALGO",
+      "opened_at": "2026-11-23T05:24:14.144295+00:00",
+      "entry_price": 0.05925,
+      "quantity": 84.05063291139241,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 0.057472499999999996,
+      "target_price": 0.0622125,
+      "strategy": "scoring-v3.1",
+      "entry_score": 2.5425646811253353,
       "weak_scans": 0
     }
   ],
