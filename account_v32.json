@@ -3,8 +3,22 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 28.43338987,
-  "open_positions": [],
+  "cash_balance": 23.43338987,
+  "open_positions": [
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "BTC",
+      "opened_at": "2026-11-25T20:28:12.338380+00:00",
+      "entry_price": 45624.4,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.00014735536248171747,
+      "quantity": 0.00010915212035665127,
+      "cost": 5.0,
+      "peak_bid": 45621.7,
+      "stop_price": 44483.79,
+      "target_price": 47905.62
+    }
+  ],
   "closed_trades": [
     {
       "strategy": "scoring-v3.2",
@@ -588,14 +602,14 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-25T19:22:47.967965+00:00",
-  "last_entry_slot": 997574,
+  "last_scan": "2026-11-25T20:28:12.338380+00:00",
+  "last_entry_slot": 997576,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
       "peak": 27.38216916,
       "max_drawdown": 0.05091699021491103,
-      "return": 0.019747167450110403,
+      "return": 0.015071533952038418,
       "closed_trades": 13,
       "win_rate": 0.5384615384615384,
       "fees": 0.6240348142686657,
@@ -605,13 +619,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.09310034666587474,
-      "return": -0.05222033766666667,
+      "return": -0.053560788729402176,
       "closed_trades": 29,
       "win_rate": 0.3793103448275862,
-      "fees": 1.1560377103390211,
-      "spread_cost": 0.09867383152829266
+      "fees": 1.1760377103390212,
+      "spread_cost": 0.09882118689077438
     },
-    "marked_at": "2026-11-25T19:22:47.967965+00:00",
+    "marked_at": "2026-11-25T20:28:12.338380+00:00",
     "sample": "collecting"
   }
 }
