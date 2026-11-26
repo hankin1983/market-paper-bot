@@ -3,7 +3,7 @@
   "mode": "PAPER",
   "currency": "GBP",
   "starting_balance": 30.0,
-  "cash_balance": 13.08662721,
+  "cash_balance": 8.08662721,
   "open_positions": [
     {
       "strategy": "scoring-v3.2",
@@ -27,7 +27,7 @@
       "entry_spread_cost": 0.0004596640206758859,
       "quantity": 0.09193280413513015,
       "cost": 5.0,
-      "peak_bid": 54.45,
+      "peak_bid": 54.64,
       "stop_price": 52.81575,
       "target_price": 56.8785
     },
@@ -43,6 +43,19 @@
       "peak_bid": 0.0435446,
       "stop_price": 0.042504345,
       "target_price": 0.04577391
+    },
+    {
+      "strategy": "scoring-v3.2",
+      "symbol": "LTC",
+      "opened_at": "2026-11-26T21:38:46.474145+00:00",
+      "entry_price": 33.69903,
+      "entry_fee": 0.02,
+      "entry_spread_cost": 0.0021745640749895366,
+      "quantity": 0.1477787342840432,
+      "cost": 5.0,
+      "peak_bid": 33.6696,
+      "stop_price": 32.85655425,
+      "target_price": 35.383981500000004
     }
   ],
   "closed_trades": [
@@ -688,14 +701,14 @@
     }
   ],
   "started_at": "2026-11-14T18:57:28.905090+00:00",
-  "last_scan": "2026-11-26T20:40:01.127178+00:00",
-  "last_entry_slot": 997625,
+  "last_scan": "2026-11-26T21:38:46.474145+00:00",
+  "last_entry_slot": 997627,
   "comparison": {
     "baseline": {
       "start": 26.63750039,
-      "peak": 27.518935561566924,
+      "peak": 27.645633852541625,
       "max_drawdown": 0.05091699021491103,
-      "return": 0.03309001064896555,
+      "return": 0.03784639879048446,
       "closed_trades": 13,
       "win_rate": 0.5384615384615384,
       "fees": 0.6240348142686657,
@@ -705,13 +718,13 @@
       "start": 30.0,
       "peak": 30.0,
       "max_drawdown": 0.09310034666587474,
-      "return": -0.06782574729864055,
+      "return": -0.06872364600156577,
       "closed_trades": 32,
       "win_rate": 0.375,
-      "fees": 1.3348860530809248,
-      "spread_cost": 0.11455262300987361
+      "fees": 1.3548860530809246,
+      "spread_cost": 0.11672718708486314
     },
-    "marked_at": "2026-11-26T20:40:01.127178+00:00",
+    "marked_at": "2026-11-26T21:38:46.474145+00:00",
     "sample": "collecting"
   }
 }
