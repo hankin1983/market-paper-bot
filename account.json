@@ -1,6 +1,6 @@
 {
   "starting_balance": 30.0,
-  "cash_balance": 2.38216916,
+  "cash_balance": 7.59075302,
   "currency": "GBP",
   "mode": "PAPER",
   "max_planned_loss_per_trade": 1.0,
@@ -16,19 +16,6 @@
       "target_price": 34.125861,
       "strategy": "scoring-v3.1",
       "entry_score": 2.9631949060412066,
-      "weak_scans": 0
-    },
-    {
-      "symbol": "LINK",
-      "opened_at": "2026-11-25T19:22:47.967965+00:00",
-      "entry_price": 6.946,
-      "quantity": 0.716959401094155,
-      "cost": 5.0,
-      "entry_fee": 0.02,
-      "stop_price": 6.73762,
-      "target_price": 7.2933,
-      "strategy": "scoring-v3.1",
-      "entry_score": 2.6803595364737562,
       "weak_scans": 0
     },
     {
@@ -780,6 +767,25 @@
       "exit_fee": 0.02100377455051709,
       "proceeds": 5.229939863078755,
       "profit": 0.22993986307875502,
+      "reason": "TAKE PROFIT"
+    },
+    {
+      "symbol": "LINK",
+      "opened_at": "2026-11-25T19:22:47.967965+00:00",
+      "entry_price": 6.946,
+      "quantity": 0.716959401094155,
+      "cost": 5.0,
+      "entry_fee": 0.02,
+      "stop_price": 6.73762,
+      "target_price": 7.2933,
+      "strategy": "scoring-v3.1",
+      "entry_score": 2.6803595364737562,
+      "weak_scans": 0,
+      "closed_at": "2026-11-27T04:36:28.968979+00:00",
+      "exit_price": 7.294,
+      "exit_fee": 0.020918007486323068,
+      "proceeds": 5.208583864094444,
+      "profit": 0.20858386409444396,
       "reason": "TAKE PROFIT"
     }
   ]
